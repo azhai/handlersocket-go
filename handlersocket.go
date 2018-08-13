@@ -30,7 +30,7 @@ import (
 )
 
 const (
-	Version          = "0.0.4"
+	Version          = "0.0.5"
 	DefaultReadPort  = 9998
 	DefaultWritePort = 9999
 	MaxPacketSize    = 1 << 24
@@ -328,8 +328,8 @@ func (handlerSocket *HandlerSocket) Connect(params ...interface{}) (err error) {
 	}
 
 	// Check min number of params
-	if len(params) < 2 {
-		err = errors.New("A hostname and username are required to connect")
+	if len(params) < 1 {
+		err = errors.New("A hostname are required to connect")
 		return
 	}
 	// Parse params
@@ -398,7 +398,7 @@ func (handlerSocket *HandlerSocket) parseParams(p []interface{}) {
 	if len(p) > 1 {
 		handlerSocket.auth.readPort = p[1].(int)
 	}
-	if len(p) > 3 {
+	if len(p) > 2 {
 		handlerSocket.auth.writePort = p[2].(int)
 	}
 

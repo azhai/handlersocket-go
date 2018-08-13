@@ -6,7 +6,7 @@ Go library for connecting to HandlerSocket Mysql plugin.  See github.com/ahiguti
 
 ## Installation
 
-	$ go get github.com/bketelsen/handlersocket-go
+	$ go get github.com/azhai/handlersocket-go
 
 
 ## Read Example  - Best examples are in the TEST file.
@@ -54,6 +54,14 @@ Go library for connecting to HandlerSocket Mysql plugin.  See github.com/ahiguti
 	fmt.Println("modified", count, "records")
 
 
+## HandlerSocketWrapper
+
+	hs := NewWrapper("127.0.0.1", 9998, 9999)
+	defer hs.Close()
+	query = hs.OpenIndex("gotesting", "kvs", "PRIMARY", "id", "content")
+
+	found, _ := query.FindOne("=", "brian")
+	fmt.Println(found.Data) 
 
 
 ## Copyright and licensing
@@ -89,8 +97,11 @@ I can see how it would be extremely useful for GoMySQL or GoDBI to use HandlerSo
 
 
 ## ChangeLog
+13/8/2018 (v0.0.5)
+	Add HandlerSocketWrapper by azhai(https://github.com/azhai/handlersocket-go)
+
 1/10/2015 (v0.0.4)
-        Fix bugs by nisboo(https://github.com/nisboo/handlersocket-go), for Go v1.8+
+	Fix bugs by nisboo(https://github.com/nisboo/handlersocket-go), for Go v1.8+
 
 1/20/2011
 	Updated library extensively

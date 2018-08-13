@@ -30,7 +30,7 @@ import (
 )
 
 const (
-	Version          = "0.0.3"
+	Version          = "0.0.4"
 	DefaultReadPort  = 9998
 	DefaultWritePort = 9999
 	MaxPacketSize    = 1 << 24

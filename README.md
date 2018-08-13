@@ -89,6 +89,8 @@ I can see how it would be extremely useful for GoMySQL or GoDBI to use HandlerSo
 
 
 ## ChangeLog
+1/10/2015 (v0.0.4)
+        Fix bugs by nisboo(https://github.com/nisboo/handlersocket-go), for Go v1.8+
 
 1/20/2011
 	Updated library extensively

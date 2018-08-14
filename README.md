@@ -58,10 +58,9 @@ Go library for connecting to HandlerSocket Mysql plugin.  See github.com/ahiguti
 
 	hs := NewWrapper("127.0.0.1", 9998, 9999)
 	defer hs.Close()
-	query = hs.OpenIndex("gotesting", "kvs", "PRIMARY", "id", "content")
-
-	found, _ := query.FindOne("=", "brian")
-	fmt.Println(found.Data) 
+	index = hs.OpenIndex("gotesting", "kvs", "PRIMARY", "id", "content")
+	found, _ := index.FindOne("=", "brian")
+	fmt.Println(found.Data)
 
 
 ## Copyright and licensing

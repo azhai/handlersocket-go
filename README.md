@@ -10,6 +10,7 @@ Go library for connecting to HandlerSocket Mysql plugin.  See github.com/ahiguti
 $ go get github.com/azhai/handlersocket-go
 
 $ #Install Mariadb and HandlerSocket in CentOS7
+$ #（Ubuntu-18.04下面mariadb-10.1的handlersocket在Insert和Update时会出错并重启服务）
 $ su -
 # yum install mariadb-server
 # tee /etc/my.cnf.d/innodb.cnf <<EOD
@@ -37,6 +38,8 @@ MariaDB [(none)]> CREATE TABLE `people` (
 MariaDB [(none)]> INSERT INTO `people` (`name`, `dob`) VALUES
     ('Joe', '1985-02-23'), ('Mary', '1982-03-12'), ('Gordon', '1978-09-02');
 MariaDB [(none)]> UPDATE `people` SET `age`=ROUND(DATEDIFF(NOW(),`dob`)/365) WHERE `age`=0;
+MariaDB [(none)]> quit
+# systemctl restart mariadb
 ```
 
 

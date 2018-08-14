@@ -1,5 +1,7 @@
 package handlersocket
 
+import "errors"
+
 const DefaultIndexName = "PRIMARY"
 
 type HandlerSocketIndex struct {
@@ -64,6 +66,10 @@ func (this *HandlerSocketIndex) FindAll(limit int, offset int, oper string, wher
 
 func (this *HandlerSocketIndex) FindOne(oper string, where ...string) (HandlerSocketRow, error) {
 	rows, err := this.FindAll(1, 0, oper, where...)
+	if rows == nil || len(rows) == 0 {
+		err = errors.New("Nothing found")
+		return HandlerSocketRow{}, err
+	}
 	return rows[0], err
 }
 
